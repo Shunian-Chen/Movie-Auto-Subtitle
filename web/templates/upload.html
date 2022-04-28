@@ -1,0 +1,54 @@
+<!doctype html>
+<html lang = "en">
+    <meta charset="UTF-8">
+    <title>Video</title>
+    <style>
+    .box-out {
+      position:relative;
+      #border:solid 1px #555;
+      float:left;
+      padding:0px 10px;
+    }
+    .box-in {
+      position:absolute;
+      left:0;
+      top:0px;
+      right:0;
+      bottom:0;
+      margin:auto;
+    }
+    .title-in {
+      position:absolute;
+      top:800px;
+      left:0;
+      right:0;
+      margin:auto;
+      text-align:center;
+      height:50px;
+      line-height:50px;
+      font-size:18px;
+    }
+    </style>
+  <head>
+    <title>File Upload</title>
+  </head>
+  <body>
+    <h1>File Upload</h1>
+    <form method="POST" action="{{url_for('upload_file')}}" enctype="multipart/form-data">
+      <p><input type="file" name="file" accept = ".mp4"></p>
+      <p><input type="submit" value="Submit"></p>
+    </form>
+    <hr>
+    <div id = "container">
+      {% for movie in movies %}
+      <div class = "box-out" style = "height:180px;width:256px" >
+          <a href = "{{url_for('movie_list', filename = movie)}}">
+          <video class = "movie box-in" data-file = "{{movie}}" width="256" height="144" controls="controls">
+          <source src="{{url_for('uploaded', filename=movie)}}" type="video/mp4" />
+          </video>
+        </a>
+      </div>
+      {% endfor %}
+  </div>
+  </body>
+</html>

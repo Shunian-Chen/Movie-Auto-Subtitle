@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang = "en">
+    <meta charset="UTF-8">
+    <title>Video</title>
+    <style>
+    .box-out {
+      position:relative;
+      #border:solid 1px #555;
+      float:left;
+      padding:0px 10px;
+    }
+    .box-in {
+      position:absolute;
+      left:0;
+      top:0px;
+      right:0;
+      bottom:0;
+      margin:auto;
+    }
+    .title-in {
+      position:absolute;
+      top:800px;
+      left:0;
+      right:0;
+      margin:auto;
+      text-align:center;
+      height:50px;
+      line-height:50px;
+      font-size:18px;
+    }
+    </style>
+<body>
+    <div id = "container">
+        <div class = "box-out" style = "height:900px;width:1280px" >
+            <video class = "movie box-in" data-file = "{{movie}}" width="1280" height="720" controls="controls">
+            <source src="{{url_for('subtitled', filename = movie)}}" type="video/mp4" />
+            </video>
+        </div>
+    </div>
+    <script>
+        // make page at center
+        function resetContentPos(){
+           var div = document.getElementById("container"); // get main container
+           var allWidth = document.body.clientWidth;  // browser width
+           var n = parseInt(allWidth / 1400);  // how many video can be fit in browser
+           var contentWidth = n * 1400; // grand width for videos
+           div.style.marginLeft = (allWidth-contentWidth)/2+"px"; // make container at center
+        }
+        (function(){
+            resetContentPos(); // make page at center
+        })();
+        window.onresize = function(){
+            resetContentPos(); // make page at center
+        }
+    </script>
+</body>
+</html>
