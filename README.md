@@ -6,7 +6,7 @@ This project aims to provide a solution for applying deep-learning methods to ad
 
 ## Data Pipeline
 
-![image-20220428201455883](C:\Users\14183\AppData\Roaming\Typora\typora-user-images\image-20220428201455883.png)
+![image-20220428201455883](imgs/dataPipeline.png)
 
 
 
